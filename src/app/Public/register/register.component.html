@@ -1,0 +1,99 @@
+<div id="container">
+    <div class="form-container">
+      <h1>¡Creá tu cuenta!</h1>
+      <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="on">
+        <label for="user" class="sr-only">Nombre de usuario</label>
+        <input
+          type="text" 
+          name="user" 
+          id="user"
+          placeholder="Usuario"
+          autocomplete="username"
+          minlength="4"
+          required="true"
+          [(ngModel)]="registerData.userName" 
+          #user="ngModel"
+        />
+        <p class="error" *ngIf="user.invalid && (user.touched || user.dirty)">
+          Ingrese un nombre de usuario válido
+        </p>
+        <label for="firstName" class="sr-only">Nombre</label>
+        <input
+          type="text"
+          name="firstName"
+          id="firstName"
+          placeholder="Nombre"
+          autocomplete="firstName"
+          minlength="3"
+          [(ngModel)]="registerData.firstName"
+          #firstName="ngModel"
+        />
+        <p
+          class="error"
+          *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)"
+        >
+          Ingrese un nombre válido
+        </p>
+        <label for="lastName" class="sr-only">Apellido</label>
+        <input
+          type="text"
+          name="lastName"
+          id="lastName"
+          placeholder="Apellido"
+          autocomplete="lastName"
+          minlength="3"
+          [(ngModel)]="registerData.lastName"
+          #lastName="ngModel"
+        />
+        <p
+          class="error"
+          *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)"
+        >
+          Ingrese un apellido válido
+        </p>
+        <label for="email" class="sr-only">email</label>
+        <input 
+           type="text"
+           name="email"
+           id="email"
+           placeholder="Email"
+           autocomplete="email"
+           minlength="8"
+           [(ngModel)]="registerData.email"
+           #email="ngModel">
+        <label for="password" class="sr-only">Contraseña</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Contraseña"
+          autocomplete="current-password"
+          minlength="7"
+          [(ngModel)]="registerData.password"
+          #password="ngModel"
+        />
+        <p
+          class="error"
+          *ngIf="password.invalid && (password.touched || password.dirty)"
+        >
+          Ingrese una contraseña válida
+        </p>
+        <button type="submit" [disabled]="registerForm.invalid">
+          Registrarse
+        </button>
+        <img
+          class="spinner"
+          src="./../../../assets/img/spinner.png"
+          alt="cargando"
+          *ngIf="cargando()"
+        />
+        <p *ngIf="errorRegister()" class="error">Error en el inicio de sesión</p>
+      </form>
+      <p>
+        ¿Ya tenés una cuenta? -
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+          >Iniciar sesión</a
+        >
+      </p>
+    </div>
+  </div>

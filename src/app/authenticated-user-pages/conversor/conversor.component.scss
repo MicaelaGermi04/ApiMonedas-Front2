@@ -1,0 +1,112 @@
+@use "./../../../assets/styles/variables.scss";
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 105px);
+    gap: 40px;
+    background-color: #F8F9FA;
+}
+
+.card {
+    padding: 30px;
+    width: 400px;
+    border-radius: 15px;
+    background-color: variables.$color-celeste-200;
+    transition: transform 0.5s;
+}
+
+    .card h1{
+        font-size: 30px;
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+
+    .card p{
+        color: #ffffff;
+        font-weight: 300;
+        font-size: 15px;
+    }
+
+.mt-20{
+    margin-top: 20px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.p-10{
+    padding: 10px;
+}
+.d-flex{
+    display: flex;
+}
+
+
+select{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    .p-10{
+        border: none; 
+        outline: none; 
+    }
+}
+
+i{
+    color: #ffffff;
+    margin: auto;
+    padding: 0 20px;
+}
+
+input{
+    border: none;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    min-width: 97%;
+    max-width: 97%;
+    font-size: 16px;
+}
+
+input:focus{
+    outline: none;
+}
+
+button{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: variables.$color-lila-100;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+button:hover{
+    background-color: variables.$color-lila-200;
+    transition: 0.1s;
+}
+
+.content-res{
+    width: 100%;
+    background: variables.$color-lila-200;
+    text-align: center;
+    padding: 30px 0;
+}
+
+    .content-res h3{
+        color: #ffffff;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    .content-res p{
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 26px;
+    }
+   

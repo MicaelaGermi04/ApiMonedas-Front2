@@ -1,0 +1,50 @@
+<div class="page-container">
+    <div class="card">
+        <h1>Mi cuenta</h1>
+
+        <div class="header-container">
+            <div class="header-sub">
+                <h2>Suscripción</h2>
+                    <p>{{subscription.name}}</p>
+                    <a [routerLink]="['/subscription']" routerLinkActive="router-link-active"
+                        >Cambiar subscripción</a>
+            </div>
+            
+            <div class="header-conver">
+                <h2>Conversiones restantes</h2>
+                <p>{{ user.subscriptionId === 3 ? 'Ilimitadas' : (remainingConversions < 0 ? 0 : remainingConversions) }}</p>
+            </div>
+        </div>
+
+        <div class="tab-hist-container">
+            <div class="tab-money-content">
+                <h2>Historial de conversiones</h2>
+
+                <table class="table">
+                    <thead>  <!--Agrupa las filas de encabezado de la tabla ---> 
+                        <tr> <!--<tr> se utiliza para definir una fila en la tabla.-->
+                            <th>Moneda de entrada</th>
+                            <th>Monto</th>
+                            <th>Moneda de salida</th>
+                            <th>Resultado</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody> <!---<tbody> se utiliza para agrupar las filas de datos de la tabla.-->
+                        <tr *ngFor="let conversion of conversions() | paginate: { id:'p2', itemsPerPage: 6, currentPage: p2 }">
+                            <td>{{conversion.firstCurrencyName}}</td>
+                            <td>{{conversion.fristCurrencyAmount}}</td>
+                            <td>{{conversion.secondCurrencyName}}</td>
+                            <td>{{conversion.convertedAmount}}</td>
+                            <td>{{conversion.date | date:'yyyy-MM-dd'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="paginate">
+                    <pagination-controls id="p2" (pageChange)="p2 = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

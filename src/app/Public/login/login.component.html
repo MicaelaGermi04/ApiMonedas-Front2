@@ -1,0 +1,22 @@
+<div id="container">
+    <div class="form-container">
+        <h1>¡Bienvenidos!</h1>
+        <p>
+            Iniciar sesion
+        </p>
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+            <label for="user" class="sr-only">firstName de usuario</label>
+            <input type="text" name="user" id="user" [(ngModel)]="loginData.userName" #user="ngModel"
+                placeholder="Usuario" autocomplete="username"
+                required>
+            <p *ngIf="user.invalid && (user.dirty || user.touched)" class="error">Este campo es requerido</p>
+            <label for="email" class="sr-only">Contraseña</label>
+            <input type="password" name="password" id="password" placeholder="Contraseña"
+                autocomplete="current-password" required minlength="7" [(ngModel)]="loginData.password"#password="ngModel">
+            <p class="error" *ngIf="password.invalid && (password.dirty || password.touched)">La contraseña tiene que tener un mínimo de 8 caracteres</p>
+            <button type="submit" [disabled]="loginForm.invalid" >Iniciar sesión</button>
+            <p *ngIf="errorLogin()" class="error">Error al iniciar sesión</p>
+        </form>
+        <p>¿No tenés cuenta? - <a [routerLink]="['/register']" routerLinkActive="router-link-active" >Registrate</a></p>
+    </div>
+</div>

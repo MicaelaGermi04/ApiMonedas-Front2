@@ -1,0 +1,29 @@
+<div class="page-container">
+    <div class="card">
+        <h1>Conversor de divisas</h1>
+        <p>Ingresa una moneda de entrada, una de salida</p>
+        <p class="mt-10">{{ user.subscriptionId === 3 ? 'Conversiones Ilimitadas' : 'Conversiones restantes: ' + (remainingConversions < 0 ? 0 : remainingConversions) }}</p>
+
+        <div class="mt-20 d-flex">
+            <select class="p-10 " [(ngModel)]="conversion.firstCurrencyId">
+                
+                <option *ngFor="let currency of currencies" [value]="currency.id" > {{ currency.name + ' ' + currency.symbol}}</option>
+            </select>
+            <i class="fa-solid fa-right-left"></i>
+            <select class="p-10 " [(ngModel)]="conversion.secondCurrencyId">
+                <option *ngFor="let currency of currencies" [value]="currency.id" > {{ currency.name + ' ' + currency.symbol}}</option>
+            </select>
+        </div>
+
+        <div class="mt-20">
+            <input type="text" placeholder="Monto a convertir" [(ngModel)]="conversion.fristCurrencyAmount">
+        </div>
+
+        <button class="mt-20 p-10" (click)="convert()">Convertir</button>
+
+        <div class="content-res mt-20">
+            <h3>Resultado</h3>
+            <p>{{conversionResult}}</p>
+        </div>
+    </div>
+</div>

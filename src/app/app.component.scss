@@ -1,0 +1,14 @@
+div{
+    display: flex;
+    flex-direction: column;
+}
+
+app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+app-header{
+    position: sticky;
+}

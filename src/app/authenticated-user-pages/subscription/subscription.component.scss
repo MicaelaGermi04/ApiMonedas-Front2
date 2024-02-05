@@ -1,0 +1,81 @@
+@use "./../../../assets/styles/variables.scss";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 50px;
+    min-height: calc(100vh - 105px);
+
+ }
+  
+.card {
+    height: 360px;
+    width: 28%; /* Ajusta el ancho según tus necesidades */
+   border-radius: 15px;
+   border-color: variables.$color-celeste-100;
+   background-color: variables.$color-celeste-100;
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+    transition: 400ms;
+    cursor: pointer;
+}
+  
+.card-header {
+    padding: 15px;
+    text-align: center;
+    color: variables.$color-lila-100;
+}
+
+h3{
+    font-weight: 700;
+    font-size: 38px;
+    margin-top: 20px;
+}
+
+.card-price {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.card-body {
+    padding: 5px;
+    text-align: center;
+    color: variables.$color-texto;
+        p {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+}
+.card-description li {
+    padding: 10px;
+}
+.card-button {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: variables.$color-lila-100;
+    color: #F8F9FA;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 400ms;
+    margin: 30px 0 20px 0;
+}
+.card-button:hover {
+    background-color: variables.$color-lila-200;
+}
+.card:hover{
+    transform: scale(1.2, 1.2);
+ }
+ .cards:hover > .card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+@media (width < 480px) {
+    .page-container {
+        display: grid;
+    }
+}
