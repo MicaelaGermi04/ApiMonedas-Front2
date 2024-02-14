@@ -22,16 +22,8 @@ export class NewCurrencyComponent {
   @Input() currency: Currency ={
     id:0,
     name: '',
-    symbol: '',
+    isOcode: '',
     value: 0,
-  };
-
-  async onSubmit(){
-    if(this.currency.id){
-      this.editCurrency();
-    }else{
-      this.createCurrency();
-    }
   };
 
   async createCurrency(){
@@ -46,42 +38,5 @@ export class NewCurrencyComponent {
    }else{
     generarMensajeError('No tiene autorizacion para crear monedas');
    }
-  }
-
-  async editCurrency(){
-    const userRole = await this.auth.getRole();
-    if(userRole === 'Admin'){
-      const res = await this.currencyService.editCurrency(this.currency);
-      if(res){
-        generarMensajeExito('La moneda ha sido editada correctamente');
-      }else{
-        generarMensajeError('Error editando la moneda');
-      }
-    }else{
-      generarMensajeError('No esta autorizado para editar monedas');
-    }
-  }
-
-  async deleteCurrency(){
-    const userRole = await this.auth.getRole();
-    if(userRole === 'Admin'){
-      const res = await this.currencyService.deleteCurrency(this.currency.id);
-      if(res){
-        generarMensajeExito('Moneda eliminada');
-        this.refresh.emit();
-        this.getCurrencies();
-      }else{
-        generarMensajeError('Error eliminando la moneda');
-      }
-    }else{
-      generarMensajeError('No esta autorizado para eliminar monedas')
-    }
-  }
-
-  async getCurrencies(){
-    const res= await this.currencyService.getAll();
-    if(res){
-      this.refresh.emit();
-    }
   }
 }

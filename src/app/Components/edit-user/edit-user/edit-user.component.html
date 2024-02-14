@@ -1,32 +1,30 @@
 <div class="form-container">
     <form id="edit-user-form" #form="ngForm" autocomplete="on" (ngSubmit)="onSubmit()">
-        <h2>Editar usuario"</h2>
+        <h2>Editar usuario</h2>
         <div class="input-container"> 
-            <input class="input-style" type="text" id="editUsername" name="username" placeholder=" " minlength="3" autocomplete="on" required="true" [(ngModel)]="user.userName">
             <label for="editUsername">Nombre de usuario</label>
+            <input type="text" id="editUsername" name="userName" placeholder=" " minlength="3" autocomplete="on" required="true" [(ngModel)]="user.userName">
         </div>
         <div class="input-container">
-            <input class="input-style" type="email" id="editEmail" name="email" placeholder=" " autocomplete="on" required="true" [(ngModel)]="user.email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
             <label for="editEmail">Email</label>
+            <input type="email" id="editEmail" name="email" placeholder=" " autocomplete="on" required="true" [(ngModel)]="user.email" #email="ngModel">
         </div>
         <div class="input-container">
-            <input class="input-style" type="text" id="editName" name="name" placeholder=" " minlength="3" autocomplete="on" required="true" [(ngModel)]="user.firstName" #name="ngModel">
             <label for="editName">Nombre</label>
+            <input type="text" id="editName" name="name" placeholder=" " minlength="3" autocomplete="on" required="true" [(ngModel)]="user.firstName" #name="ngModel">
         </div>
         <div class="input-container">
-            <input class="input-style" type="text" id="editLastname" name="lastname" placeholder=" " minlength="3" autocomplete="on" required="true" [(ngModel)]="user.lastName" #lastname="ngModel">
             <label for="editLastname">Apellido</label>
+            <input type="text" id="editLastname" name="lastName" placeholder=" " minlength="3" autocomplete="on" required="true" [(ngModel)]="user.lastName" #lastName="ngModel">
         </div>
         <div class="radio-input">
-            <span>Suscripción</span>
-            <input type="radio" id="free" name="subscription" [(ngModel)]="user.subscriptionId" value="1"> Free 
-            <input type="radio" id="trial" name="subscription" [(ngModel)]="user.subscriptionId" value="2"> Trial 
-            <input type="radio" id="pro" name="subscription" [(ngModel)]="user.subscriptionId" value="3"> Pro 
+            <label for="editSubscription">Id de subscripción</label>
+            <input type="text" id="editSubscription" name="subscriptionId" required="true" [(ngModel)]="user.subscriptionId" #subsriptionId="ngModel">
         </div>
         
         <div class="btn-container">
-            <button type="submit" (click)="editUser(); this.close.emit()">Editar</button>
-            <button type="button" class="cancel" (click)="this.close.emit()">Cancelar</button>
+            <button class="confirmation-but" type="submit" (click)="editUser(); this.close.emit()">EDITAR</button>
+            <button class="cancel-but" type="button" (click)="this.close.emit()">Cancelar</button>
         </div>
     </form>
 </div>

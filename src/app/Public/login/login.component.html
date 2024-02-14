@@ -1,11 +1,11 @@
-<div id="container">
+<div id="page-container">
     <div class="form-container">
-        <h1>¡Bienvenidos!</h1>
+        <h1>Moving coins</h1>
         <p>
             Iniciar sesion
         </p>
         <form #loginForm="ngForm" (ngSubmit)="login()">
-            <label for="user" class="sr-only">firstName de usuario</label>
+            <label for="user" class="sr-only">Nombre de usuario</label>
             <input type="text" name="user" id="user" [(ngModel)]="loginData.userName" #user="ngModel"
                 placeholder="Usuario" autocomplete="username"
                 required>

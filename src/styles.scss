@@ -62,12 +62,12 @@ h2{
 
 button{
 	font-size: 18px;
-  background-color: variables.$color-celeste-100;
+  background-color: variables.$color-principal-100;
   border: 1px solid black;
   padding: 5px 10px;
   cursor: pointer;
   &:hover{
-    background-color: variables.$color-celeste-200;
+    background-color: variables.$color-principal-200;
   }
 }
 

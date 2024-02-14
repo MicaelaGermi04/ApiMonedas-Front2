@@ -1,8 +1,8 @@
 @use "./../../../assets/styles/variables.scss";
 
 footer {
-    height: 25px;
-    background-color: variables.$color-celeste-200;
+    height: 30px;
+    background-color: variables.$color-blanco-50;
     text-align: center;
     display: flex;
     align-items: center;
@@ -11,6 +11,7 @@ footer {
 }
 
 p {
-    color: #fff;
-    font-size: small;
+    color: variables.$color-negro-900;
+    font-size: large;  
+    margin-top: 10px;
 }

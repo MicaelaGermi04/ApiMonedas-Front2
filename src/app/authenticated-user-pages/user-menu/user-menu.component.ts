@@ -4,6 +4,7 @@ import { generarMensajeError, generarMensajeExito } from 'src/app/Helpers/messag
 import { Conversion } from 'src/app/Interfaces/conversion';
 import { Currency } from 'src/app/Interfaces/currency';
 import { Subscription } from 'src/app/Interfaces/subscription';
+import { User } from 'src/app/Interfaces/user';
 import { UserSubscription } from 'src/app/Interfaces/user';
 import { AuthService } from 'src/app/Services/auth.service';
 import { ConversionService } from 'src/app/Services/conversion.service';
@@ -36,15 +37,23 @@ export class UserMenuComponent implements OnInit{
    p1: number = 1;
    p2: number = 1;
    
-   user: UserSubscription = {
+   userSub: UserSubscription = {
     subscriptionId: 0
-  }
+   }
+   user: User ={
+    id: 0,
+    userName: '',
+    lastName: '',
+    firstName: '',
+    email: '',
+    subscriptionId: 0,
+  };
 
   // Suscripción seleccionada
   subscription: Subscription = {
     id: 0,
     name: "",
-    amountOfConversions: 0,
+    amountOfConvertions: 0,
     price: "",
   };
   async ngOnInit() {

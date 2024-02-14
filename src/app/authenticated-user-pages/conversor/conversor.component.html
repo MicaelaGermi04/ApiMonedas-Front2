@@ -1,29 +1,33 @@
 <div class="page-container">
     <div class="card">
         <h1>Conversor de divisas</h1>
-        <p>Ingresa una moneda de entrada, una de salida</p>
-        <p class="mt-10">{{ user.subscriptionId === 3 ? 'Conversiones Ilimitadas' : 'Conversiones restantes: ' + (remainingConversions < 0 ? 0 : remainingConversions) }}</p>
+        <p>{{ user.subscriptionId === 3 ? 'Conversiones ilimitadas' : 'Conversiones restantes: ' + (remainingConversions < 0 ? 0 : remainingConversions) }}</p>
+
+    
+            <a [routerLink]="['/subscription']" routerLinkActive="router-link-active"
+            >Cambiar subscripción</a>
+        
 
         <div class="mt-20 d-flex">
-            <select class="p-10 " [(ngModel)]="conversion.firstCurrencyId">
+            <select class="p-10 " [(ngModel)]="conversion.firstCurrencyName">
                 
-                <option *ngFor="let currency of currencies" [value]="currency.id" > {{ currency.name + ' ' + currency.symbol}}</option>
+                <option *ngFor="let currency of currencies" [value]="currency.name" > {{ currency.name}}</option>
             </select>
             <i class="fa-solid fa-right-left"></i>
-            <select class="p-10 " [(ngModel)]="conversion.secondCurrencyId">
-                <option *ngFor="let currency of currencies" [value]="currency.id" > {{ currency.name + ' ' + currency.symbol}}</option>
+            <select class="p-10 " [(ngModel)]="conversion.secondCurrencyName">
+                <option *ngFor="let currency of currencies" [value]="currency.name" > {{ currency.name}}</option>
             </select>
         </div>
 
         <div class="mt-20">
-            <input type="text" placeholder="Monto a convertir" [(ngModel)]="conversion.fristCurrencyAmount">
+            <input type="text" placeholder="Monto a convertir" [(ngModel)]="conversion.firstCurrencyAmount">
         </div>
 
-        <button class="mt-20 p-10" (click)="convert()">Convertir</button>
+        <button class="convert-but" (click)="convert()">CONVERTIR</button>
 
         <div class="content-res mt-20">
             <h3>Resultado</h3>
-            <p>{{conversionResult}}</p>
+            <p>{{conversion.convertedAmount}}</p>
         </div>
     </div>
 </div>

@@ -1,2 +1,47 @@
 @use "./../../../assets/styles/variables.scss";
 @use "./../../../assets/styles/panel.scss";
+
+.page-container{
+    height: 100vh;
+}
+h1{
+    i{
+        margin-left: 15px;
+    }
+}
+button{
+    width: 250px;
+    height: auto;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: variables.$color-principal-200;
+    cursor: pointer;
+    font-size: 500;
+    font-size: 18px;
+    color: variables.$color-principal-800;
+    i{
+        margin-right: 10px;
+        color: variables.$color-principal-800;
+    }
+}
+
+button:hover{
+    background-color: variables.$color-principal-300;
+    transition: 0.1s;
+}
+a{
+    color: variables.$color-principal-800;
+    font-size: 18px;
+    font-weight: 500;
+    font-family:Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+@media screen and (width < 980px) {
+    h1{
+      i{
+        font-size: 35px;
+
+      } 
+    }
+}

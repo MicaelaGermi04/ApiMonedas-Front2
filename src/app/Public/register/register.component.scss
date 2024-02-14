@@ -1,19 +1,25 @@
-#container{
-    height: calc( 100vh - 40px - 40px);
+@use '../../../assets/styles/forms.scss';
+@use '../../../assets/styles/variables.scss';
+
+#page-container{
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-form{
+.form-container{
     gap: 20px;
+    display: flex;
     text-align: center;
+    justify-content:center;
     max-width: 500px;
-    background-color: pink;
     padding: 20px;
-    border-radius: 10px 0 10px 0;
+    p{
+        font-size: 20px;
+        font-weight: 300;
+    }
 }
 
 form, input, button{
-    font-size: 32px;
+    font-size: 20px;
 }

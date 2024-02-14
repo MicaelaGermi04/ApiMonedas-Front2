@@ -1,6 +1,6 @@
-<div id="container">
+<div id="page-container">
     <div class="form-container">
-      <h1>¡Creá tu cuenta!</h1>
+      <h1>Creá tu cuenta</h1>
       <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="on">
         <label for="user" class="sr-only">Nombre de usuario</label>
         <input
@@ -81,12 +81,6 @@
         <button type="submit" [disabled]="registerForm.invalid">
           Registrarse
         </button>
-        <img
-          class="spinner"
-          src="./../../../assets/img/spinner.png"
-          alt="cargando"
-          *ngIf="cargando()"
-        />
         <p *ngIf="errorRegister()" class="error">Error en el inicio de sesión</p>
       </form>
       <p>

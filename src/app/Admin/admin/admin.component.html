@@ -1,0 +1,123 @@
+<div class="page-container">
+    <div class="card">
+        <h1>Administrar</h1>
+
+        <!-- Tabla subscripciones -->
+        <div class="tab-hist-container">
+            <div class="tab-money-content">
+                <div class="header-table">
+                    <h2>Subscripciones</h2>
+                </div>
+                <!-- Tabla -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Cantidad de conversiones</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let subscription of subscriptions | paginate: { id:'p1', itemsPerPage:3,currentPage: p1}">
+                            <td>{{subscription.id}}</td>
+                            <td>{{subscription.name}}</td>
+                            <td>{{subscription.amountOfConvertions}}</td>
+                            <td>{{subscription.price}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+         <!-- Tabla monedas -->
+        <div class="tab-hist-container">
+            <div class="tab-money-content">
+                <div class="header-moneda header-table">
+                    <h2>Monedas</h2>
+                    <button class="but-add" (click)="dialogCrearMoneda.showModal()"><i class="fas fa-plus"></i></button>
+                    <dialog method="dialog" #dialogCrearMoneda>
+                        <app-new-currency 
+                        (close)="dialogCrearMoneda.close()" (refresh)="getAllCurrencies()">
+                        </app-new-currency>
+                    </dialog>
+                </div>
+                <!-- Tabla -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Codigo ISO</th>
+                            <th>Indice de convertibilidad</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let currency of currencies | paginate: { id:'p2', itemsPerPage:5, currentPage: p2}">
+                            <td>{{currency.id}}</td>
+                            <td>{{currency.name}}</td>
+                            <td>{{currency.isOcode}}</td>
+                            <td>{{currency.value}}</td>
+                            <td><button (click)="dialogEditarMoneda.showModal()"><i class="fas fa-pencil-alt"></i>Editar</button></td>
+                            <dialog method="dialog" #dialogEditarMoneda>
+                                <app-edit-currency 
+                                [currency]="currency"
+                                (close)="dialogEditarMoneda.close()" (refresh)="getAllCurrencies()">
+                               </app-edit-currency>
+                            </dialog>
+                            <td><button (click)="deleteCurrency(currency.id)"><i class="fas fa-trash-alt"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="paginate">
+                    <pagination-controls id="p2" (pageChange)="p2 = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                </div>
+            </div>
+        </div>
+        <!-- Tabla Usuarios -->
+        <div class="tab-hist-container">
+            <div class="tab-money-content">
+                <div class="header-table">
+                    <h2>Usuarios</h2>
+                    <button (click)="dialogCrearUsuario.showModal()"><i class="fas fa-plus"></i></button>
+                    <dialog method="dialog" #dialogCrearUsuario>
+                        <app-new-user (cerrar)="dialogCrearUsuario.close()" (refresh)="getAllUsers()">
+                        </app-new-user>
+                    </dialog>
+                </div>
+                <!-- Tabla -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre de usuario</th>
+                            <th>Nombre y apellido</th>
+                            <th>Email</th>
+                            <th>Id de subscripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users | paginate: { id: 'p3', itemsPerPage:5, currentPage: p3}">
+                            <td>{{user.id}}</td>
+                            <td>{{user.firstName}} {{user.lastName}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.userName}}</td>
+                            <td>{{user.subscriptionId}}</td>
+                            <td><button (click)="dialogEditarUsuario.showModal()"><i class="fas fa-pencil-alt"></i>Editar</button></td>
+                            <dialog method="dialog" #dialogEditarUsuario>
+                                <app-edit-user [user]="user"
+                                (close)="dialogEditarUsuario.close()" (refresh)="getAllUsers()">
+                                </app-edit-user>
+                            </dialog>
+                            <td><button (click)="deleteUser(user.id)"><i class="fas fa-trash-alt"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="paginate">
+                    <pagination-controls id="p3" (pageChange)="p3 = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,44 +4,41 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 105px);
+    height: calc(100vh - 90px - 30px);
     gap: 40px;
-    background-color: #F8F9FA;
+    background-color: variables.$color-fondo;
 }
 
 .card {
     padding: 30px;
     width: 400px;
     border-radius: 15px;
-    background-color: variables.$color-celeste-200;
+    background-color: variables.$color-principal-100;
     transition: transform 0.5s;
+    box-shadow: 0px 0px 15px variables.$color-principal-200;
+
 }
 
     .card h1{
-        font-size: 30px;
-        color: #ffffff;
+        font-size: 35px;
+        font-weight: 500;
+        color: variables.$color-principal-900;
         margin-bottom: 10px;
     }
 
-    .card p{
-        color: #ffffff;
-        font-weight: 300;
-        font-size: 15px;
-    }
+p{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
 
-.mt-20{
-    margin-top: 20px;
+    padding-top: 10px ;
+    color: variables.$color-blanco-50;
 }
-.mt-10{
-    margin-top: 10px;
+a{
+    color: variables.$color-principal-800;
+    font-size: 15px;
+    font-weight: 300;
 }
-.p-10{
-    padding: 10px;
-}
-.d-flex{
-    display: flex;
-}
-
 
 select{
     width: 100%;
@@ -63,7 +60,7 @@ i{
 input{
     border: none;
     border-radius: 10px;
-    padding-top: 10px;
+    padding-top: 20px;
     padding-bottom: 10px;
     padding-left: 10px;
     min-width: 97%;
@@ -75,38 +72,55 @@ input:focus{
     outline: none;
 }
 
-button{
+
+.convert-but{
     width: 100%;
     border: none;
     border-radius: 10px;
-    background-color: variables.$color-lila-100;
-    font-weight: 700;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: variables.$color-principal-800;
+    font-weight: 600;
     color: #ffffff;
     cursor: pointer;
     font-size: 17px;
 }
 
-button:hover{
-    background-color: variables.$color-lila-200;
+.convert-but:hover{
+    background-color: variables.$color-principal-900;
     transition: 0.1s;
 }
 
 .content-res{
     width: 100%;
-    background: variables.$color-lila-200;
+    border-radius: 10px;
+    background: variables.$color-principal-200;
     text-align: center;
     padding: 30px 0;
 }
 
-    .content-res h3{
-        color: #ffffff;
-        font-weight: 400;
-        font-size: 18px;
-        margin-bottom: 30px;
-    }
-    .content-res p{
-        color: #ffffff;
-        font-weight: 500;
-        font-size: 26px;
-    }
+.content-res h3{
+    color: variables.$color-blanco-50;
+    font-weight: 400;
+    font-size: 15px;
+    margin-bottom: 30px;
+ }
+.content-res p{
+    color: variables.$color-principal-900;
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.mt-20{
+    margin-top: 20px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.p-10{
+    padding: 10px;
+}
+.d-flex{
+    display: flex;
+}    
    

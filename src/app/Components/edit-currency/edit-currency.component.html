@@ -1,0 +1,22 @@
+<div class="form-container">
+    <form id="edit-currency-form" #form="ngForm" autocomplete="on" (ngSubmit)="onSubmit()">
+        <h2>Editar moneda</h2>
+        <div class="input-container"> 
+            <label for="">Nombre</label>
+            <input class="input-style" type="text" name="name" placeholder=" " minlength="2" autocomplete="on" required="true" [(ngModel)]="currency.name" #name="ngModel">
+        </div>
+        <div class="input-container">
+            <label for="editisOcode">Codigo ISO</label>
+            <input class="input-style" type="text" name="isOcode" placeholder=" " autocomplete="on" required="true" [(ngModel)]="currency.isOcode" #isOcode="ngModel">
+        </div>
+        <div class="input-container">
+            <label for="editValue">Indice de convertibilidad</label>
+            <input class="input-style" type="number" name="value" placeholder=" " required="true" [(ngModel)]="currency.value" #value="ngModel">
+        </div>
+        
+        <div class="btn-container">
+            <button class="confirmation-but" type="submit" (click)="editCurrency(); this.close.emit()">EDITAR</button>
+            <button class="cancel-but" type="button" (click)="this.close.emit()">Cancelar</button>
+        </div>
+    </form>
+</div>

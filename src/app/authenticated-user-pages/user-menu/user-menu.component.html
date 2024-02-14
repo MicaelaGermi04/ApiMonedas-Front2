@@ -1,22 +1,58 @@
 <div class="page-container">
     <div class="card">
-        <h1>Mi cuenta</h1>
+        <h1>Mi cuenta <i class="fa fa-user"></i></h1>
 
+        <!-- Info usuario-->
         <div class="header-container">
-            <div class="header-sub">
-                <h2>Suscripción</h2>
-                    <p>{{subscription.name}}</p>
-                    <a [routerLink]="['/subscription']" routerLinkActive="router-link-active"
-                        >Cambiar subscripción</a>
+            <div class="header-content">
+                <h2>Datos de usuario</h2>
+                <div class="body-container">
+                    <div class="body-content">
+                        <p class="text">Usuario:</p>
+                        <p>{{user.userName}}</p>
+                    </div>
+                    <div class="body-content">
+                        <p class="text">Nombre:</p>
+                        <p>{{user.firstName}} {{user.lastName}}</p>
+                    </div>
+                    <div class="body-content">
+                        <p class="text">Email:</p>
+                        <p>{{user.email}}</p>
+                    </div>
+                </div>
+                <div class="header-but">
+                    <button (click)="dialogEditarUsuario.showModal()"><i class="fas fa-pencil-alt"></i>Editar</button>
+                    <dialog method="dialog" #dialogEditarUsuario>
+                        <app-edit-user [user]="user"
+                        (close)="dialogEditarUsuario.close()">
+                    </app-edit-user>
+                    </dialog>
+                </div>
             </div>
-            
-            <div class="header-conver">
-                <h2>Conversiones restantes</h2>
-                <p>{{ user.subscriptionId === 3 ? 'Ilimitadas' : (remainingConversions < 0 ? 0 : remainingConversions) }}</p>
+        
+         <!--Info sub-->
+    
+            <div class="header-content">
+                <h2>Suscripción {{subscription.name}}</h2>
+                <div class="body-content">
+                    <p class="text">Precio:</p>
+                    <p>USD {{subscription.price}}</p>
+                </div>
+                <div class="body-content">
+                    <p class="text">Conversiones restantes:</p>
+                    <p>{{ user.subscriptionId === 3 ? 'Ilimitadas' : (remainingConversions < 0 ? 0 : remainingConversions) }}</p>
+                </div>
+                <div class="header-but">
+                    <button><i class="fas fa-pencil-alt"></i>
+                        <a [routerLink]="['/subscription']" routerLinkActive="router-link-active"
+                        >Cambiar subscripción</a>
+                    </button>
+                </div>
             </div>
         </div>
+        
 
-        <div class="tab-hist-container">
+        <div *ngIf="user.subscriptionId === 2 || user.subscriptionId === 3" class="tab-hist-container">
             <div class="tab-money-content">
                 <h2>Historial de conversiones</h2>
 
@@ -31,9 +67,9 @@
                         </tr>
                     </thead>
                     <tbody> <!---<tbody> se utiliza para agrupar las filas de datos de la tabla.-->
-                        <tr *ngFor="let conversion of conversions() | paginate: { id:'p2', itemsPerPage: 6, currentPage: p2 }">
+                        <tr *ngFor="let conversion of conversions() | paginate: { id:'p2', itemsPerPage: 5, currentPage: p2 }">
                             <td>{{conversion.firstCurrencyName}}</td>
-                            <td>{{conversion.fristCurrencyAmount}}</td>
+                            <td>{{conversion.firstCurrencyAmount}}</td>
                             <td>{{conversion.secondCurrencyName}}</td>
                             <td>{{conversion.convertedAmount}}</td>
                             <td>{{conversion.date | date:'yyyy-MM-dd'}}</td>

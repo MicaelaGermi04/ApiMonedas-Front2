@@ -1,9 +1,9 @@
 @use '../styles/variables.scss';
 
 .page-container {
-    height: calc(100vh - 105px);
+    height: 100%;
     gap: 30px;
-    background-color: #F8F9FA;
+    background-color: variables.$color-fondo;
 }
 
 .card{
@@ -14,86 +14,78 @@
 }
 
 h1{
-    color: variables.$color-celeste-200;
-    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    color: variables.$color-principal-900;
+    font-size: 40px;
     font-weight: 500;
     margin-bottom: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 .header-container{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
+    justify-content: center;
+    gap: 30px;
     border-radius: 10px;
-    padding: 20px 0;
-    width: 100%;
-    margin: auto;
+    padding: 20px;
+    width: 95%;
+    margin-right: 40px;
+    
 }
-
-.header-sub{
-    background-color: variables.$color-celeste-100;
-    text-align: start;
-    width: 100%;
+.header-content{
+    background-color: variables.$color-principal-100;
+    text-align: center;
+    width: 80%;
     padding: 20px;
     border-radius: 10px;
-    color: white;
-}
-
-.body-sub {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    button {
-        border: none;
-        background: none;
-        cursor: pointer;
-    }
-    i {
+    color: variables.$color-negro-900;
+    box-shadow: 0px 0px 15px variables.$color-principal-200;
+    p{
+        display: flex;
+        justify-content: center;
+        text-align: center;
         font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+.body.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.body-content{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    .text{
+        margin-right: 10px;
+        width: 300px;
+        font-weight: 600;
+        color: variables.$color-principal-800;
+
     }
 }
 
-#selectSubs {
-    background-color: variables.$color-celeste-100;
-    border: none;
-    color: #F8F9FA;
-    font-size: 26px;
-    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 700;
-    margin: 0;
-    cursor: pointer;
+.header-content h2,
+.tab-money-content h2{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: variables.$color-principal-900;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#selectSubs:disabled {
-    cursor: not-allowed;
-    opacity: 0.90;
-}
-
-.header-conver{
-    background-color: variables.$color-celeste-100;
-    text-align: start;
-    width: 100%;
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-}
-    .header-sub h2,
-    .header-conver h2,
-    .tab-money-content h2{
-        font-size: 22px;
-        font-weight: 400;
-        margin-bottom: 15px;
-    }
-
-    .header-sub p,
-    .header-conver p{
-        font-size: 26px;
-        font-weight: 700;
-    }
+.header-but{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 .tab-money-container{
-    background-color: variables.$color-celeste-100;
+    background-color: variables.$color-principal-100;
     border-radius: 10px;
     padding: 20px 0;
     width: 100%;
@@ -101,33 +93,15 @@ h1{
 }
 
 .tab-money-content{
-    color: white;
+    color: variables.$color-negro-900;
     padding: 0 20px;
 }
 
     .paginate {
         width: 100%;
-        text-align: end;  
+        text-align: center;  
     }
 
-.header-moneda {
-    display: flex;
-    gap: 10px;
-    align-items: baseline;
-    button {
-        background-color: variables.$color-celeste-200;
-        border: none;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-    }
-    i {
-        text-align: center;
-        font-size: 18px;
-        color: white;
-    }
-}
 
 button {
     cursor: pointer;
@@ -142,12 +116,14 @@ button {
   
   .table th {
     text-align: start;
-    color: white; 
+    color: variables.$color-negro-900;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
     padding-bottom: 10px; 
   }
   
   .table td {
-    padding: 5px;
+    padding: 10px;
     button {
         border: none;
         background: none;
@@ -159,11 +135,12 @@ button {
   }
   
   .table tbody tr{
-    background-color: variables.$color-celeste-200; 
+    background-color: variables.$color-principal-200; 
 }
 
 .tab-hist-container{
-    background-color: variables.$color-celeste-100;
+    background-color: variables.$color-principal-100;
+    box-shadow: 0px 0px 15px variables.$color-principal-200;
     border-radius: 10px;
     padding: 20px 0;
     width: 100%;
@@ -181,21 +158,27 @@ dialog {
 ::ng-deep {
     .ngx-pagination .current {
         padding: 0.1875rem 0.625rem;
-        background: variables.$color-celeste-200 !important;
-        color: #fefefe !important;
+        background: variables.$color-principal-200 !important;
+        color: variables.$color-principal-900 !important;
         cursor: default;
     }
     .ngx-pagination a {
-        color: #fefefe !important;
+        color: variables.$color-principal-900  !important;
         cursor: pointer;
     }
 }
 
-@media screen and (max-width: 721px) {
+@media screen and (width < 980px) {
     .card {
         width: 90vw;
     }
     *{
-        font-size: 10px;
+        font-size: 13px;
+    }
+    .table td{
+        padding: 10px;
+    }
+    .body-content .text{
+        width: 140px;
     }
 }

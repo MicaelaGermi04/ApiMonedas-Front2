@@ -1,5 +1,5 @@
 <header *ngIf="auth.token() && !isLoginPage()">
-   <img src="./../../../assets/img/Logo MovingCoins.jpg" alt="Logo">
+   <img src="./../../../assets/img/Logo2.png" alt="Logo" [routerLink]="['/conversor']">
    <nav>
       <a class="text admin" *ngIf="isAdmin()" [routerLink]="['/admin']" routerLinkActive="active">Administrar</a>
       <a class="icon admin" *ngIf="isAdmin()" [routerLink]="['/admin']" routerLinkActive="active"><i class="fa-solid fa-wrench"></i></a>

@@ -1,8 +1,6 @@
 export interface Conversion{
     userId: number,
-    firstCurrencyId: number,
-    secondCurrencyId: number,
-    fristCurrencyAmount: number,
+    firstCurrencyAmount: number,
     convertedAmount: number,
     firstCurrencyName: string,
     secondCurrencyName: string,

@@ -1,7 +1,7 @@
 import { Component, OnInit, WritableSignal, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { generarMensajeError } from 'src/app/Helpers/messages';
-import { Conversion } from 'src/app/Interfaces/conversion';
+import { Conversion, ConversionResult } from 'src/app/Interfaces/conversion';
 import { Currency } from 'src/app/Interfaces/currency';
 import { User } from 'src/app/Interfaces/user';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -32,10 +32,12 @@ export class ConversorComponent implements OnInit{
    amountOfConversionsDone: number = 0;
    availableConversions: number | undefined = 0;
    remainingConversions: number = 0; //Conversiones restantes
-   conversionResult: number=0;
+  
    errorConverting: WritableSignal<boolean> = signal(false);
    cargando: WritableSignal<boolean>= signal(false);
 
+   conversionResult: number= 0;
+   
    user: User = {
     id: 0,
     userName: '',
@@ -47,9 +49,7 @@ export class ConversorComponent implements OnInit{
 
   conversion: Conversion = {
     userId: 0,
-    firstCurrencyId: 0,
-    secondCurrencyId: 0,
-    fristCurrencyAmount: 0,
+    firstCurrencyAmount: 0,
     firstCurrencyName: '',
     secondCurrencyName: '',
     convertedAmount: 0,
@@ -61,6 +61,7 @@ export class ConversorComponent implements OnInit{
       // Obtener todas las monedas
       this.currencies = await this.currencyService.getAll();
       this.sortedCurrencies= this.sortCurrencies(this.currencies);
+      console.log(this.sortedCurrencies)
     
       // Obtener el ID del usuario autenticado
       this.userId = this.auth.getUserId();
@@ -106,13 +107,13 @@ export class ConversorComponent implements OnInit{
 
     //validaciones
     if(!this.conversion) return console.log("No se realizo la conversion " + this.conversion);
-    if(isNaN(this.conversion.fristCurrencyAmount)){  //NaN valor especial, se utiliza para represntar resultados que no son numeros validos en operaciones de punto flotante.
+    if(isNaN(this.conversion.firstCurrencyAmount)){  //NaN valor especial, se utiliza para represntar resultados que no son numeros validos en operaciones de punto flotante.
       return generarMensajeError('El monto a convertir debe ser un número');
     }
-    if(this.conversion.fristCurrencyAmount <= 0){
+    if(this.conversion.firstCurrencyAmount <= 0){
       return generarMensajeError('El monto a convertir no puede ser negativo o nulo');
     }
-    if(this.conversion.firstCurrencyId == this.conversion.secondCurrencyId){
+    if(this.conversion.firstCurrencyName == this.conversion.secondCurrencyName){
       return generarMensajeError('Las monedas deben ser diferentes');
     }
     if(this.remainingConversions<=0){
@@ -122,14 +123,14 @@ export class ConversorComponent implements OnInit{
         footer: '<a href="/subscription">Cambiar subscripción</a>'
       });
     }
-     
+    console.log(this.conversion)
     //Conversion
-    const res = await this.conversionService.PerformConversion(this.conversion);
-    console.log("Respuesta: "+res);
+      const res = await this.conversionService.PerformConversion(this.conversion);
+      console.log("Respuesta: "+ res);
 
     //Manejo resultado conversion
     if(res){
-      this.conversionResult= res;
+      this.conversion.convertedAmount= res;
       await this.actualizarConversionesRestantes();
 
       // Si no quedan conversiones, redirigir al usuario
@@ -146,7 +147,7 @@ export class ConversorComponent implements OnInit{
 
   async actualizarConversionesRestantes(){
     this.amountOfConversionsDone = await this.conversionService.getAmountOfConversions();
-    console.log(this.amountOfConversionsDone);
+    console.log("Cantidad de conversiones realizadas: "+this.amountOfConversionsDone);
 
     if(this.availableConversions !== undefined){
       this.remainingConversions = this.availableConversions - this.amountOfConversionsDone;

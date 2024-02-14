@@ -1,0 +1,46 @@
+@use "./../../../assets/styles/panel.scss";
+@use "./../../../assets/styles/variables.scss";
+
+.card{
+    width: 90%;
+}
+
+div .header-table {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    align-items: baseline;
+}
+.header-table {
+    button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: variables.$color-principal-900;   
+    border: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    color: variables.$color-blanco-50;
+    font-size: 20px;
+    font-weight: 300;
+   }
+}
+button:hover{
+    
+    transform: scale(1.2, 1.2);
+}
+.table td button{
+    color: variables.$color-principal-900;
+    width: 100px;
+}
+@media screen and (width < 980px) {
+    .table td button{
+        width: 35px;
+    }
+    .header-table button{
+      i{
+        font-size: 15px;
+      }
+    }
+}

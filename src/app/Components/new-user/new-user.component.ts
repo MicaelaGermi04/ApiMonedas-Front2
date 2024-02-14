@@ -17,8 +17,8 @@ export class NewUserComponent {
   userService = inject(UserService);
   auth = inject(AuthService);
 
-  @Output() cerrar = new EventEmitter();
-  @Output() refresh = new EventEmitter()
+  @Output() close = new EventEmitter();
+  @Output() refresh = new EventEmitter();
   @Input() user: User = {
     id: 0,
     userName: "",

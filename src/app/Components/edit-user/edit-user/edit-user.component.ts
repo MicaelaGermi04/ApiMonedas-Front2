@@ -36,8 +36,6 @@ export class EditUserComponent {
   }
 
   async editUser(){
-    const userRole = await this.auth.getRole();
-    if(userRole === 'Admin'){
       const res = await this.userService.editUser(this.user);
       if(res){
         generarMensajeExito('Usuario editado exitosamente');
@@ -45,8 +43,5 @@ export class EditUserComponent {
       }else{
         generarMensajeError('Error editando el usuario');
       }
-    }else{
-      generarMensajeError('No esta autorizado para editar usuarios');
-    }
   }
 }

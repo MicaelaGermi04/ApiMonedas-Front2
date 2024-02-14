@@ -6,8 +6,8 @@
         </div>
         <div class="card-body">
             <ul class="card-description">
-                <li><p>Hasta 10 conversiones por mes</p></li>
-                <li><p>No incluye historial de conversiones</p></li>
+                <li><i class="fas fa-check" style="color: #14c20b"></i>10 conversiones mensuales</li>
+                <li><i class="fas fa-times" style="color: #ff0000"></i>NO incluye historial de conversiones</li>
                 <button class="card-button" (click)="editUserSubscription(subscriptions[0].id)">Elegir</button>
             </ul>
         </div>
@@ -15,12 +15,12 @@
     <div class="card">
         <div class="card-header ">
             <h3>{{subscriptions[1].name}}</h3>
-            <p class="card-price">USD {{subscriptions[1].price}} por mes</p>
+            <p class="card-price">USD {{subscriptions[1].price}}/mes</p>
         </div>
         <div class="card-body">
             <ul class="card-description">
-                <li><p>Hasta 100 conversiones por mes</p></li>
-                <li><p>Incluye historial de conversiones</p></li>
+                <li><i class="fas fa-check" style="color: #14c20b"></i>100 conversiones mensuales</li>
+                <li><i class="fas fa-check" style="color: #14c20b"></i>Incluye historial de conversiones</li>
                 <button class="card-button" (click)="editUserSubscription(subscriptions[1].id)">Elegir</button>
             </ul>
         </div>
@@ -28,12 +28,12 @@
     <div class="card">
         <div class="card-header ">
             <h3>{{subscriptions[2].name}}</h3>
-            <p class="card-price">USD {{subscriptions[2].price}}</p>
+            <p class="card-price">USD {{subscriptions[2].price}}/mes</p>
         </div>
         <div class="card-body">
             <ul class="card-description">
-                <li><p>Conversiones ilimitadas</p></li>
-                <li><p>Incluye historial de conversiones</p></li>
+                <li><i class="fas fa-check" style="color: #14c20b"></i>Conversiones ilimitadas</li>
+                <li><i class="fas fa-check" style="color: #14c20b"></i>Incluye historial de conversiones</li>
                 <button class="card-button" (click)="editUserSubscription(subscriptions[2].id)">Elegir</button>
             </ul>
         </div>

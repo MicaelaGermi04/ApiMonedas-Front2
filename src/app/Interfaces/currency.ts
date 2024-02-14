@@ -1,6 +1,6 @@
 export interface Currency{
     id: number,
     name: string,
-    symbol: string,
+    isOcode: string,
     value: number,
 }

@@ -8,6 +8,7 @@ import { NewUserComponent } from 'src/app/Components/new-user/new-user.component
 import { EditUserComponent } from 'src/app/Components/edit-user/edit-user/edit-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EditCurrencyComponent } from 'src/app/Components/edit-currency/edit-currency.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NewCurrencyComponent,
     NewUserComponent,
     EditUserComponent,
+    EditCurrencyComponent,
     ReactiveFormsModule,
     NgxPaginationModule,
   ]

@@ -33,7 +33,7 @@ export class SubscriptionComponent implements OnInit{
   subscription: Subscription= {
     id: 0,
     name: "",
-    amountOfConversions: 0,
+    amountOfConvertions: 0,
     price: "",
   }
 
@@ -67,7 +67,7 @@ export class SubscriptionComponent implements OnInit{
     Swal.fire({
       title: 'Has seleccionado la suscripción ' + subscriptionName,
       showCancelButton: true,
-      confirmButtonColor: '#5E807F',
+      confirmButtonColor: '#001dbd',
       cancelButtonColor: '#b7b7b7',
       cancelButtonText: 'Volver',
       confirmButtonText: 'Continuar',
