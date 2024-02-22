@@ -80,9 +80,10 @@
             <div class="tab-money-content">
                 <div class="header-table">
                     <h2>Usuarios</h2>
-                    <button (click)="dialogCrearUsuario.showModal()"><i class="fas fa-plus"></i></button>
+                    <button class="but-add" (click)="dialogCrearUsuario.showModal()"><i class="fas fa-plus"></i></button>
                     <dialog method="dialog" #dialogCrearUsuario>
-                        <app-new-user (cerrar)="dialogCrearUsuario.close()" (refresh)="getAllUsers()">
+                        <app-new-user 
+                        (close)="dialogCrearUsuario.close()" (refresh)="getAllUsers()">
                         </app-new-user>
                     </dialog>
                 </div>
@@ -100,13 +101,14 @@
                     <tbody>
                         <tr *ngFor="let user of users | paginate: { id: 'p3', itemsPerPage:5, currentPage: p3}">
                             <td>{{user.id}}</td>
+                            <td>{{user.userName}}</td>
                             <td>{{user.firstName}} {{user.lastName}}</td>
                             <td>{{user.email}}</td>
-                            <td>{{user.userName}}</td>
                             <td>{{user.subscriptionId}}</td>
                             <td><button (click)="dialogEditarUsuario.showModal()"><i class="fas fa-pencil-alt"></i>Editar</button></td>
                             <dialog method="dialog" #dialogEditarUsuario>
-                                <app-edit-user [user]="user"
+                                <app-edit-user 
+                                [user]="user"
                                 (close)="dialogEditarUsuario.close()" (refresh)="getAllUsers()">
                                 </app-edit-user>
                             </dialog>

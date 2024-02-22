@@ -26,14 +26,11 @@ export class UserMenuComponent implements OnInit{
   subscriptionService = inject(SubscriptionService);
   conversionService = inject(ConversionService);
 
-   // Señales y variables para el manejo del estado
    userId: number | null = 0;
    amountOfConversionsDone: number = 0;
    availableConversions: number | undefined = 0;
    remainingConversions: number = 0;
-   conversions: WritableSignal<Conversion[]> = signal([]);
-   subscriptions:Subscription[] =[];
-   editingMode = signal(false);
+   conversions: Conversion[] = [];
    p1: number = 1;
    p2: number = 1;
    
@@ -57,31 +54,19 @@ export class UserMenuComponent implements OnInit{
     price: "",
   };
   async ngOnInit() {
+    this.conversions= await this.conversionService.getAllConversions();
     
-    // Lista de conversiones realizadas
-    this.conversionService.getAllConversions().then(res => {
-      this.conversions.set(res);
-    })
-    // Suscripciones
-    this.subscriptionService.getAll().then((res)=> {
-      this.subscriptions = res;
-      console.log(this.subscriptions);
-    })
-
     // Obtener el ID del usuario autenticado
     this.userId = this.auth.getUserId();  
 
-    // Si hay un usuario autenticado, obtener su información de suscripción
+    // Si hay un usuario autenticado, obtener su información y subscripcion
     if (this.userId !== null) {
       this.user = await this.userService.getUserById(this.userId)
-      console.log(this.user);
 
-      // Si el usuario tiene una suscripción, obtener la cantidad de conversiones disponibles
       if (this.user.subscriptionId !== undefined) {
         this.availableConversions = await this.subscriptionService.getSubscriptionAmountConversions(this.user.subscriptionId);
          
         const subscription = await this.subscriptionService.getSubscriptionById(this.user.subscriptionId);
-        console.log(this.subscription);
         if (subscription !== undefined) {
           this.subscription= subscription;
         }

@@ -12,8 +12,8 @@
             <p *ngIf="user.invalid && (user.dirty || user.touched)" class="error">Este campo es requerido</p>
             <label for="email" class="sr-only">Contraseña</label>
             <input type="password" name="password" id="password" placeholder="Contraseña"
-                autocomplete="current-password" required minlength="7" [(ngModel)]="loginData.password"#password="ngModel">
-            <p class="error" *ngIf="password.invalid && (password.dirty || password.touched)">La contraseña tiene que tener un mínimo de 8 caracteres</p>
+                autocomplete="current-password" required minlength="6" [(ngModel)]="loginData.password"#password="ngModel">
+            <p class="error" *ngIf="password.invalid && (password.dirty || password.touched)">La contraseña tiene que tener un mínimo de 6 caracteres</p>
             <button type="submit" [disabled]="loginForm.invalid" >Iniciar sesión</button>
             <p *ngIf="errorLogin()" class="error">Error al iniciar sesión</p>
         </form>

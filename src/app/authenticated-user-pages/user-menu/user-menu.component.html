@@ -23,7 +23,8 @@
                 <div class="header-but">
                     <button (click)="dialogEditarUsuario.showModal()"><i class="fas fa-pencil-alt"></i>Editar</button>
                     <dialog method="dialog" #dialogEditarUsuario>
-                        <app-edit-user [user]="user"
+                        <app-edit-user 
+                        [user]="user"
                         (close)="dialogEditarUsuario.close()">
                     </app-edit-user>
                     </dialog>
@@ -57,8 +58,8 @@
                 <h2>Historial de conversiones</h2>
 
                 <table class="table">
-                    <thead>  <!--Agrupa las filas de encabezado de la tabla ---> 
-                        <tr> <!--<tr> se utiliza para definir una fila en la tabla.-->
+                    <thead>  
+                        <tr>
                             <th>Moneda de entrada</th>
                             <th>Monto</th>
                             <th>Moneda de salida</th>
@@ -66,8 +67,8 @@
                             <th>Fecha</th>
                         </tr>
                     </thead>
-                    <tbody> <!---<tbody> se utiliza para agrupar las filas de datos de la tabla.-->
-                        <tr *ngFor="let conversion of conversions() | paginate: { id:'p2', itemsPerPage: 5, currentPage: p2 }">
+                    <tbody> 
+                        <tr *ngFor="let conversion of conversions | paginate: { id:'p2', itemsPerPage: 5, currentPage: p2 }">
                             <td>{{conversion.firstCurrencyName}}</td>
                             <td>{{conversion.firstCurrencyAmount}}</td>
                             <td>{{conversion.secondCurrencyName}}</td>
@@ -81,6 +82,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

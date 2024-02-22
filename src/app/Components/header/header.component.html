@@ -1,12 +1,9 @@
 <header *ngIf="auth.token() && !isLoginPage()">
    <img src="./../../../assets/img/Logo2.png" alt="Logo" [routerLink]="['/conversor']">
    <nav>
-      <a class="text admin" *ngIf="isAdmin()" [routerLink]="['/admin']" routerLinkActive="active">Administrar</a>
-      <a class="icon admin" *ngIf="isAdmin()" [routerLink]="['/admin']" routerLinkActive="active"><i class="fa-solid fa-wrench"></i></a>
+      <a class="text" *ngIf="isAdmin()" [routerLink]="['/admin']" routerLinkActive="active">Administrar</a>
       <a class="text"  [routerLink]="['/conversor']" routerLinkActive="active">Conversor</a>
-      <a class="icon" [routerLink]="['/conversor']" routerLinkActive="active"><i class="fa-solid fa-rotate" style="color: #ffffff;"></i></a>
       <a class="text" [routerLink]="['/perfil']" routerLinkActive="active">Mi cuenta</a>
-      <a  class="icon" [routerLink]="['/conversor']" routerLinkActive="active"><i class="fa-solid fa-user" style="color: #ffffff;"></i></a>
-    <button (click)="auth.logOut()">Logout</button>
+      <button class="text" (click)="auth.logOut()">Logout</button>
    </nav>
 </header>

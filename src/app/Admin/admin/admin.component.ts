@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent{
+export class AdminComponent implements OnInit{
   router= inject(Router);
   auth= inject(AuthService);
   userService= inject(UserService);
@@ -35,13 +35,10 @@ export class AdminComponent{
   async ngOnInit(){
 
     this.users= await this.userService.getAll();
-    console.log(this.users);
 
     this.currencies = await this.currencyService.getAll();
-    console.log(this.currencies);
 
     this.subscriptions= await this.subscriptionService.getAll();
-    console.log(this.subscriptions)
   }
     
   async deleteCurrency(currencyId: number){
@@ -58,8 +55,8 @@ export class AdminComponent{
         if(result.isConfirmed){
           this.currencyService.deleteCurrency(currencyId).then((res) => {
             if(res){
-              this.getAllCurrencies();
               generarMensajeExito("Moneda eliminada exitosamente")
+              this.getAllCurrencies();
             }else{
               generarMensajeError("Error eliminando la moneda. Intente nuevamente")
               console.log(res);
@@ -71,7 +68,7 @@ export class AdminComponent{
   }
   
   async getAllCurrencies(){
-    this.users= await this.userService.getAll();
+    this.currencies= await this.currencyService.getAll();
  }
 
 
@@ -89,8 +86,8 @@ export class AdminComponent{
       if(result.isConfirmed){
         this.userService.deleteUser(userId).then((res) => {
           if(res){
-            this.getAllUsers();
             generarMensajeExito("Usuario eliminado exitosamente");
+            this.getAllUsers();
           }else{
             generarMensajeError("Error eliminado el usuario. Intente nuevamente")
           }
@@ -101,6 +98,6 @@ export class AdminComponent{
 }
 
   async getAllUsers(){
-    this.currencies= await this.currencyService.getAll();
+    this.users= await this.userService.getAll();
   }
 }

@@ -38,17 +38,15 @@ export class CurrencyService{
         const res = await fetch(API + 'Currency', {
             method:'POST',
             headers: {
-                'Content-type' : 'application/json',  //'Content-Type' se establece en 'application/json' para indicar que el cuerpo de la solicitud es un objeto JSON
+                'Content-type' : 'application/json',  
                 Authorization: 'Bearer ' + this.authService.token(),
             },
             body: JSON.stringify(currency),
         });
-        console.log("Moneda creada: "+ res);
         return res.ok;
     }
 
     async editCurrency(currency: Currency): Promise<boolean> {
-        if (!currency.id) return false;
         const res = await fetch(API + 'Currency/' + currency.id, {
           method: 'PUT',
           headers: {

@@ -32,16 +32,18 @@ export class EditUserComponent {
   };
 
   onSubmit(){
-    if(this.user.id) this.editUser();
+    if(this.user.id){
+       this.editUser();
+    }
   }
 
-  async editUser(){
-      const res = await this.userService.editUser(this.user);
-      if(res){
-        generarMensajeExito('Usuario editado exitosamente');
-        this.refresh.emit();
-      }else{
-        generarMensajeError('Error editando el usuario');
-      }
+  async editUser(){ 
+    const res = await this.userService.editUser(this.user);
+    if(res){
+      generarMensajeExito('Usuario editado exitosamente');
+      this.refresh.emit();
+    }else{
+      generarMensajeError('Error editando el usuario');
+    }
   }
 }

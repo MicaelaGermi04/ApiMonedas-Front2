@@ -14,6 +14,7 @@ import {LoginData, RegisterData} from '../Interfaces/user';
   })
   export class AuthService {
     
+    //devuelve el valor asociado con 'token'
     constructor() {
       this.token.set(localStorage.getItem('token'));
     }
@@ -30,7 +31,7 @@ import {LoginData, RegisterData} from '../Interfaces/user';
           body: JSON.stringify(loginData),
         });
         if (!res.ok) return false;
-        const tokenRecibido = await res.text();
+        const tokenRecibido = await res.text(); //el token recibido se extrae del cuerpo de la respuesta utilizando res.text().
         localStorage.setItem('token', tokenRecibido);
         this.token.set(tokenRecibido);
         return true;
@@ -65,7 +66,6 @@ import {LoginData, RegisterData} from '../Interfaces/user';
       const token = this.getToken();
   
       if (!token) {
-        console.error('No token found');  // Agrega un registro de consola en caso de que no haya ningún token.
         return null;
       }
   
@@ -74,8 +74,9 @@ import {LoginData, RegisterData} from '../Interfaces/user';
           const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); //reemplazar los caracteres especiales - y _ en la cadena base64Url por los caracteres + y /, 
           const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
               return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-          }).join('')); //ecodifican la cadena base64 utilizando la función atob(), convierten cada carácter decodificado en su representación de escape URL
-          //y luego unen todos los caracteres en una cadena. El resultado final es una cadena jsonPayload que representa la carga útil decodificada en formato JSON.
+          }).join('')); 
+          //decodifican la cadena base64 utilizando la función atob(), convierten cada carácter decodificado en su representación de escape URL
+          //y luego une todos los caracteres en una cadena.
         
           const decodedToken = JSON.parse(jsonPayload);
   
@@ -109,11 +110,11 @@ import {LoginData, RegisterData} from '../Interfaces/user';
           }).join(''));
           const decodedToken = JSON.parse(jsonPayload);
     
-        if (decodedToken && decodedToken.subscriptionId) {
+        if (decodedToken && decodedToken.role) {
           const role = decodedToken.role;
           return role;
         } else {
-          console.error('No subscription ID found in token');
+          console.error('No role found in token');
           return null;
         }
       } catch (error) {

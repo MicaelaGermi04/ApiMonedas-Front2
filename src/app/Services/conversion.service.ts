@@ -17,7 +17,8 @@ export class ConversionService {
               'Authorization': 'Bearer ' + this.authService.token(),
             },
           });
-          return await res.json();
+          const data = await res.json();
+          return data;
     }
 
     async PerformConversion(conversion: Conversion){
@@ -29,8 +30,8 @@ export class ConversionService {
             },
             body: JSON.stringify(conversion),
         });
-        console.log("Conversion: ", res);
-        if (res) return await res.json();
+        const data = await res.json();
+        return data;
     }
 
     async getAmountOfConversions(){

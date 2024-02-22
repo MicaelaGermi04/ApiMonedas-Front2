@@ -23,11 +23,3 @@ export interface LoginData{
 export interface UserSubscription {
    subscriptionId: number,
 }
-
-export interface UserForCreation {
-    userName: string,
-    email: string,
-    firstName: string,
-    lastName: string,
-    subscriptionId: number,
-}

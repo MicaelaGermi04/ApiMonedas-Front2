@@ -19,7 +19,8 @@ export class NewCurrencyComponent {
 
   @Output() close = new EventEmitter();
   @Output() refresh = new EventEmitter();
-  @Input() currency: Currency ={
+  
+   currency: Currency ={
     id:0,
     name: '',
     isOcode: '',
@@ -32,6 +33,7 @@ export class NewCurrencyComponent {
     const res = await this.currencyService.createCurrency(this.currency);
     if(res){
       generarMensajeExito('La moneda ha sido creada con exito');
+      this.refresh.emit();
     }else{
       generarMensajeError('Error creando moneda');
     }

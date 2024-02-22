@@ -1,31 +1,29 @@
 <div class="page-container">
     <div class="card">
         <h1>Conversor de divisas</h1>
-        <p>{{ user.subscriptionId === 3 ? 'Conversiones ilimitadas' : 'Conversiones restantes: ' + (remainingConversions < 0 ? 0 : remainingConversions) }}</p>
+        <p>{{ user.subscriptionId === 3 ? 'Conversiones ilimitadas' : 'Conversiones restantes: ' + remainingConversions}}</p>
 
     
-            <a [routerLink]="['/subscription']" routerLinkActive="router-link-active"
-            >Cambiar subscripción</a>
+        <a [routerLink]="['/subscription']" routerLinkActive="router-link-active"
+        >Cambiar subscripción</a>
         
 
-        <div class="mt-20 d-flex">
-            <select class="p-10 " [(ngModel)]="conversion.firstCurrencyName">
-                
+        <div class="content-select">
+            <select [(ngModel)]="conversion.firstCurrencyName">  
                 <option *ngFor="let currency of currencies" [value]="currency.name" > {{ currency.name}}</option>
             </select>
-            <i class="fa-solid fa-right-left"></i>
-            <select class="p-10 " [(ngModel)]="conversion.secondCurrencyName">
+            
+            <select [(ngModel)]="conversion.secondCurrencyName">
                 <option *ngFor="let currency of currencies" [value]="currency.name" > {{ currency.name}}</option>
             </select>
         </div>
 
-        <div class="mt-20">
-            <input type="text" placeholder="Monto a convertir" [(ngModel)]="conversion.firstCurrencyAmount">
-        </div>
+        <input type="text" placeholder="Monto a convertir" [(ngModel)]="conversion.firstCurrencyAmount">
+        
 
         <button class="convert-but" (click)="convert()">CONVERTIR</button>
 
-        <div class="content-res mt-20">
+        <div class="content-res">
             <h3>Resultado</h3>
             <p>{{conversion.convertedAmount}}</p>
         </div>

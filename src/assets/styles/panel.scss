@@ -169,8 +169,8 @@ dialog {
 }
 
 @media screen and (width < 980px) {
-    .card {
-        width: 90vw;
+    .header-content{
+        width: 400px;
     }
     *{
         font-size: 13px;

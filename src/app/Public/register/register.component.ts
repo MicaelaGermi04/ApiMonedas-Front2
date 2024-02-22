@@ -12,7 +12,6 @@ export class RegisterComponent {
   authService = inject(AuthService)
   router = inject(Router);
   errorRegister: WritableSignal<boolean> = signal(false)
-  cargando = signal(false);
 
   registerData: RegisterData = {
     userName: "",
@@ -26,7 +25,6 @@ export class RegisterComponent {
 
   async register(){
     this.errorRegister.set(false);
-    this.cargando.set(true);
     try{
       const res = await this.authService.register(this.registerData);
       if(res.ok) {
@@ -38,6 +36,5 @@ export class RegisterComponent {
     } catch(err) {
       console.warn('Error registrando', err)
     }
-    this.cargando.set(false);
   }
 }

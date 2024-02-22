@@ -4,11 +4,11 @@ div{
 }
 
 app-footer {
-    position: fixed;
+    position: fixed; //posición fija
     bottom: 0;
     width: 100%;
 }
 
 app-header{
-    position: sticky;
+    position: sticky; //posición relativa
 }

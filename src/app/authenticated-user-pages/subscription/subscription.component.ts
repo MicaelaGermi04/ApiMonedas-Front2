@@ -26,10 +26,8 @@ export class SubscriptionComponent implements OnInit{
     subscriptionId: 0,
   }
 
-  //Lista subscripciones
   subscriptions: Subscription[]=[];
 
-  //Subs seleccionada
   subscription: Subscription= {
     id: 0,
     name: "",
@@ -38,13 +36,10 @@ export class SubscriptionComponent implements OnInit{
   }
 
   async ngOnInit(){
-    this.subscriptionService.getAll().then((res)=> {
-      this.subscriptions = res;
-      console.log(this.subscriptions);
-    })
+    this.subscriptions= await this.subscriptionService.getAll()
 
     this.userId= this.authService.getUserId();
-    console.log('Id de usuario: ' + this.userId);
+
     if(this.userId !== null){
       this.user = await this.userService.getUserById(this.userId);
       console.log('Id de subscripcion del usuario ' + this.user.subscriptionId);
@@ -54,18 +49,14 @@ export class SubscriptionComponent implements OnInit{
   async editUserSubscription(subscriptionId: number){
     //Id usuario
     const userId= this.authService.getUserId();
-
-    const subscription = await this.subscriptionService.getSubscriptionById(subscriptionId);
-    console.log("Subscripcion: " + subscription);
-    const subscriptionName= subscription?.name;
-    console.log("Nombre subscripcion: " + subscriptionName)
-
-    //Usuario no autenticado
-    //Si la condición !userId es verdadera, el código retornará inmediatamente y no ejecutará el resto del código. El valor retornado será undefined.
+    //Usuario no autenticado. El valor retornado será undefined.
     if(!userId) return;
 
+    const subscription = await this.subscriptionService.getSubscriptionById(subscriptionId);
+  
+
     Swal.fire({
-      title: 'Has seleccionado la suscripción ' + subscriptionName,
+      title: 'Has seleccionado la suscripción ' + subscription?.name,
       showCancelButton: true,
       confirmButtonColor: '#001dbd',
       cancelButtonColor: '#b7b7b7',
@@ -76,10 +67,8 @@ export class SubscriptionComponent implements OnInit{
       if (result.isConfirmed) {
         this.userService.editUserSubscription(userId, subscriptionId).then((res) => {
           if (res) {
-            // Redirigir al usuario a la página de inicio de sesión
             this.router.navigate(['/conversor']);
           } else {
-            // Mostrar un mensaje de error en caso de fallo
             Swal.fire(
               'Ha ocurrido un error al seleccionar tu suscripción',
               'Intenta nuevamente.',

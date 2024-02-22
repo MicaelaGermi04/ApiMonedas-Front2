@@ -34,10 +34,6 @@ header {
   }
 }
 
-.icon {
-  display: none;
-}
-
 nav a.active{
   box-shadow: 0 4px 0 0 variables.$color-principal-900;
   line-height: 0.1;
@@ -57,7 +53,8 @@ nav a.active{
   }
 
   header nav .text {
-    display: none;
+    font-size: 14px;
   }
+  
 
 }

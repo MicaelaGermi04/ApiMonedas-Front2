@@ -22,8 +22,8 @@ export class UserService extends ApiService{
         const res = await fetch(API + 'User/' + id, {
             method: 'GET',
             headers: {
-                 'Content-type': 'application/json',   //'Content-Type' se establece en 'application/json' para indicar que el cuerpo de la solicitud es un objeto JSON
-                 Authorization: 'Bearer ' + this.authService.token(), //'Authorization' se establece utilizando el token de autenticación obtenido a través de this.auth.token()
+                'Content-type': 'application/json',   
+                Authorization: 'Bearer ' + this.authService.token(), 
             },
         });
         return await res.json();
@@ -36,9 +36,9 @@ export class UserService extends ApiService{
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + this.authService.token(),
           },
-          body: JSON.stringify(user), //JSON.stringify(user), que convierte el objeto user en una cadena JSON.
+          body: JSON.stringify(user), 
         });
-        return res.ok; //devuelve un valor booleano que indica si la solicitud fue exitosa o no.
+        return res.ok; 
     }
 
     async editUser(user: User): Promise<boolean>{
@@ -71,7 +71,7 @@ export class UserService extends ApiService{
                 'Content-type': 'application/json',
                 Authorization: 'Bearer ' + this.authService.token(),
             },
-            body: JSON.stringify(subscriptionId) //// Enviar subscriptionId directamente
+            body: JSON.stringify(subscriptionId)
         });
         return res.ok;
     }

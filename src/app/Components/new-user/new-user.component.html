@@ -18,17 +18,13 @@
             <input class="input-style" type="text" id="createLastname" name="lastname" placeholder=" " minlength="3" autocomplete="on" required="true" [(ngModel)]="userForCreation.lastName" #lastname="ngModel">
         </div>
         <div class="input-container">
-            <label for="createPassword">Contrasena</label>
+            <label for="createPassword">Contraseña</label>
             <input class="input-style" type="password" id="createPassword" name="password" placeholder=" " minlength="8" autocomplete="on" required="true" [(ngModel)]="userForCreation.password" #password="ngModel">
-        </div>
-        <div class="input-container">
-            <label for="editSubscription">Id de subscripción</label>
-            <input type="text" id="editSubscription" name="subscriptionId" required="true" [(ngModel)]="user.subscriptionId" #subsriptionId="ngModel">
         </div>
         
         <div class="btn-container">
-            <button class="confirmation-but" type="submit" (click)="addUser(); this.close.emit()">Confirmar</button>
-            <button class="cancel-but"  type="button"(click)="this.close.emit()">Cancelar</button>
+            <button class="confirmation-but" type="submit" (click)="addUser(); close.emit()">Confirmar</button>
+            <button class="cancel-but"  type="button"(click)="close.emit()">Cancelar</button>
         </div>
         
     </form>

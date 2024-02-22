@@ -9,22 +9,21 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isSmallScreen= false;
-  constructor(private breakpointObserver: BreakpointObserver){}
- ngOnInit(){
-  this.breakpointObserver.observe([Breakpoints.Small]).subscribe(result => {
-    this.isSmallScreen = result.matches;
-  });
- }
-
  auth = inject(AuthService);
  router = inject(Router); 
 
  isLoginPage(): boolean {
-  return this.router.url === '/login';
+  if (this.router.url === '/login') {
+    return true;
+  }
+  return false;
  }
 
  isAdmin(): boolean{
-  return this.auth.getRole() === 'Admin';
- }
+  if (this.auth.getRole() === 'Admin') {
+    return true;
+  } else {
+    return false;
+  }
+ } 
 }
